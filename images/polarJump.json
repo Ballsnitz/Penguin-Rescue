@@ -1,0 +1,108 @@
+{"frames": {
+
+"Polar-27.png":
+{
+	"frame": {"x":1361,"y":1719,"w":543,"h":880},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":2,"w":543,"h":880},
+	"sourceSize": {"w":558,"h":883}
+},
+"Polar-28.png":
+{
+	"frame": {"x":1479,"y":837,"w":542,"h":880},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":542,"h":880},
+	"sourceSize": {"w":558,"h":883}
+},
+"Polar-29.png":
+{
+	"frame": {"x":1306,"y":2601,"w":542,"h":879},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":2,"w":542,"h":879},
+	"sourceSize": {"w":558,"h":883}
+},
+"Polar-30.png":
+{
+	"frame": {"x":762,"y":1707,"w":597,"h":880},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":2,"w":597,"h":880},
+	"sourceSize": {"w":603,"h":883}
+},
+"Polar-31.png":
+{
+	"frame": {"x":762,"y":837,"w":715,"h":868},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":715,"h":868},
+	"sourceSize": {"w":723,"h":871}
+},
+"Polar-32.png":
+{
+	"frame": {"x":837,"y":1,"w":766,"h":834},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":5,"w":766,"h":834},
+	"sourceSize": {"w":772,"h":843}
+},
+"Polar-33.png":
+{
+	"frame": {"x":1,"y":1607,"w":759,"h":800},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":759,"h":800},
+	"sourceSize": {"w":769,"h":805}
+},
+"Polar-34.png":
+{
+	"frame": {"x":1,"y":2409,"w":758,"h":801},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":5,"w":758,"h":801},
+	"sourceSize": {"w":769,"h":809}
+},
+"Polar-35.png":
+{
+	"frame": {"x":1,"y":1,"w":834,"h":767},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":7,"w":834,"h":767},
+	"sourceSize": {"w":841,"h":774}
+},
+"Polar-36.png":
+{
+	"frame": {"x":1,"y":3212,"w":758,"h":801},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":4,"w":758,"h":801},
+	"sourceSize": {"w":767,"h":807}
+},
+"Polar-37.png":
+{
+	"frame": {"x":1,"y":770,"w":759,"h":835},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":5,"w":759,"h":835},
+	"sourceSize": {"w":765,"h":846}
+},
+"Polar-50.png":
+{
+	"frame": {"x":761,"y":2589,"w":543,"h":879},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":9,"w":543,"h":879},
+	"sourceSize": {"w":549,"h":890}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "polarJump.png",
+	"format": "RGBA8888",
+	"size": {"w":2022,"h":4014},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2a9ac66d4589b88cd43d67f254ea40dc:cceb7bc429348408fab6b9a2ca89ce39:cc67813d17c37e24df3b38525e07b720$"
+}
+}

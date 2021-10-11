@@ -1,0 +1,108 @@
+{"frames": {
+
+"Polar-50.png":
+{
+	"frame": {"x":1192,"y":1,"w":543,"h":879},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":9,"w":543,"h":879},
+	"sourceSize": {"w":549,"h":890}
+},
+"Polar-51.png":
+{
+	"frame": {"x":1,"y":1,"w":597,"h":880},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":8,"w":597,"h":880},
+	"sourceSize": {"w":604,"h":890}
+},
+"Polar-52.png":
+{
+	"frame": {"x":2290,"y":1,"w":480,"h":883},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":7,"w":480,"h":883},
+	"sourceSize": {"w":487,"h":890}
+},
+"Polar-53.png":
+{
+	"frame": {"x":2772,"y":1,"w":476,"h":885},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":476,"h":885},
+	"sourceSize": {"w":484,"h":890}
+},
+"Polar-54.png":
+{
+	"frame": {"x":2290,"y":886,"w":477,"h":885},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":477,"h":885},
+	"sourceSize": {"w":484,"h":890}
+},
+"Polar-55.png":
+{
+	"frame": {"x":1761,"y":1,"w":527,"h":885},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":5,"w":527,"h":885},
+	"sourceSize": {"w":533,"h":890}
+},
+"Polar-56.png":
+{
+	"frame": {"x":1181,"y":883,"w":578,"h":878},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":9,"w":578,"h":878},
+	"sourceSize": {"w":587,"h":890}
+},
+"Polar-57.png":
+{
+	"frame": {"x":600,"y":1,"w":590,"h":880},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":8,"w":590,"h":880},
+	"sourceSize": {"w":604,"h":890}
+},
+"Polar-58.png":
+{
+	"frame": {"x":1,"y":883,"w":597,"h":879},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":9,"w":597,"h":879},
+	"sourceSize": {"w":604,"h":890}
+},
+"Polar-59.png":
+{
+	"frame": {"x":600,"y":883,"w":579,"h":877},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":10,"w":579,"h":877},
+	"sourceSize": {"w":587,"h":890}
+},
+"Polar-60.png":
+{
+	"frame": {"x":1761,"y":888,"w":527,"h":885},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":5,"w":527,"h":885},
+	"sourceSize": {"w":536,"h":890}
+},
+"Polar-61.png":
+{
+	"frame": {"x":2769,"y":888,"w":477,"h":884},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":6,"w":477,"h":884},
+	"sourceSize": {"w":488,"h":890}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "polarRun.png",
+	"format": "RGBA8888",
+	"size": {"w":3249,"h":1774},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:84375f4c414750092494431051485037:2d80f3673fa1e750b020e37bb8a6cc90:819f6ce6c62c234927ad965f4d1aa567$"
+}
+}
