@@ -2,11 +2,12 @@ var MainMenu = function(game) {
 };
 
 var clouds
+var muteState
 
 MainMenu.prototype.create = function() {
+  
 
-
-      	        //background
+      	//background
         //
         this.background=game.add.sprite(0,0,"background");
         this.background.width=game.width;
@@ -32,7 +33,6 @@ MainMenu.prototype.create = function() {
 		this.adventure = game.add.sprite(0,0,'adventure');
 	    this.adventure.width=game.width;
         this.adventure.height=game.height;
-	
 
 		
     ground = game.add.sprite(0, 1025, 'ground');
@@ -47,8 +47,8 @@ MainMenu.prototype.create = function() {
    player = game.add.sprite(600, 830, 'player');
 
 
-      //  initalise keyboard controls.
-		enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+  //  initalise keyboard controls.
+	enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
      
 
 //	music1.stop();
@@ -56,16 +56,33 @@ MainMenu.prototype.create = function() {
 //	music3.stop();
 //	musicComplete.stop();
 	musicIntro = this.game.add.audio('intro');
-    musicIntro.play();
+  musicIntro.play();
 	musicIntro.volume = 0.1
 
 //	soundButton
-   button = game.add.button(game.world.centerX - -1000, 000, 'muteButton', actionOnClick, this, 2, 1, 0);
+// button = game.add.button(game.world.centerX - -1000, 000, 'muteButton', actionOnClick, this, 2, 1, 0);
+  muteState=game.add.sprite(game.world.centerX - -1000, 000,"mute");
+  muteState.visible = false;
+  button = game.add.button(game.world.centerX - -1000, 000, 'muteButton', actionOnClick, this, 2, 1, 0);
 
-//    button.onInputOver.add(over, this);
- //   button.onInputOut.add(out, this);
-  //  button.onInputUp.add(up, this);
+  button.onInputOver.add(over, this);
+  button.onInputOut.add(out, this);
+  button.onInputUp.add(up, this);
 }
+
+function up() {
+  console.log('button up', arguments);
+}
+
+function over() {
+  console.log('mute');
+}
+
+function out() {
+  console.log('button out');
+}
+
+
 
 
 /*
@@ -83,10 +100,11 @@ if (enterKey.isDown)
     this.game.state.start('Menu1');
   }
   function actionOnClick () {
-
+    muteState.visible =! muteState.visible;
      if (!this.game.sound.mute) {
         this.game.sound.mute = true
 		 } else {
-		 this.game.sound.mute = false;}
+		 this.game.sound.mute = false;
+    }
  
 }

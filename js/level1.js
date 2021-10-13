@@ -1,5 +1,8 @@
 
 //declare a new state
+
+
+
 var Level1State = function(game) {
 };
 
@@ -7,21 +10,37 @@ var Level1State = function(game) {
  * Add game variables here
  *
  */
-
+var text;
+var graphics;
+var hsv;
+var timerEvents = [];
 
 /*
  * Create runs once only when Phaser first loads
  * create the game scene by adding objects to the stage
  */
+function create ()
+{
+    text = this.add.text(32, 32);
+
+    timerEvents.push(this.time.addEvent({ delay: 10000, loop: true }));
+
+    hsv = Phaser.Display.Color.HSVColorWheel();
+
+    graphics = this.add.graphics({ x: 240, y: 36 });
+}
 
 Level1State.prototype.create=function(){
+	// init the keys
+	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+	// background
 	this.background=game.add.sprite (0,0,"background");
 	this.background.width=game.width;
 	this.background.height=game.height;
-	
-		this.clouds=game.add.tileSprite(0,0,game.width,game.height,"clouds")
+	// clouds
+	this.clouds=game.add.tileSprite(0,0,game.width,game.height,"clouds")
 	this.clouds.y=game.height-this.clouds.height;
-	
+	// mountains
 	this.mountain1=game.add.tileSprite(0,0,game.width,game.height,"mountains1")
 	this.mountain1.y=game.height-this.mountain1.height;
 	this.mountain2=game.add.tileSprite(0,0,game.width,game.height,"mountains2")
@@ -56,7 +75,7 @@ Level1State.prototype.create=function(){
 	
 	Coins = game.add.group();
 	Platforms = game.add.group();
-	Enemies = game.add.group();
+	// Enemies = game.add.group();
 	InvisibleWalls = game.add.group();
 	Platforms1 = game.add.group();	
 	
@@ -71,7 +90,7 @@ Level1State.prototype.create=function(){
 	Level1releasePlatform33();
 		
 	
-	Level1releaseGroundEnemy ();
+	/// Level1releaseGroundEnemy ();
 	Level1releaseGroundCoin ();
 	Level1releaseGroundCoin2 ();
 	Level1releaseGroundCoin3 ();
@@ -86,6 +105,9 @@ Level1State.prototype.create=function(){
 	polarBearEat = this.game.add.audio('polarBearEat');
 	polarBearHurt = this.game.add.audio('polarBearHurt');	
 	polarBearHurt.volume = 0.1
+
+	// init the timer!
+	// Timer adapted from <https://phaser.io/examples/v3/view/time/multiple-timers#> //
 }
 
 
@@ -105,7 +127,7 @@ Level1releasePlatform2 = function(){
 	IW1.body.immovable=true;
 	IW1.body.velocity.x=-500;
 	
-		coin=game.add.sprite(3100,400, "goldCoin2");
+	coin=game.add.sprite(3100,400, "goldCoin2");
 	game.physics.arcade.enable(coin) ;
 	Coins.add(coin);
 //	coin.body.allowGravity=false;
@@ -131,7 +153,7 @@ Level1releasePlatform3 = function(){
 	IW2.body.immovable=true;
 	IW2.body.velocity.x=-500;
 	
-		coin2=game.add.sprite(4100,400, "goldCoin");
+	coin2=game.add.sprite(4100,400, "goldCoin");
 	game.physics.arcade.enable(coin2) ;
 	Coins.add(coin2);
 //	coin2.body.allowGravity=false;
@@ -159,12 +181,15 @@ Level1releasePlatform22 = function(){
 	IW3.body.immovable=true;
 	IW3.body.velocity.x=-500;
 	
-	enemy=game.add.sprite(6100,400, "enemy");
-	game.physics.arcade.enable(enemy) ;
-	Enemies.add(enemy);
-//	enemy.body.allowGravity=false;
-//	enemy.body.immovable=true;
-	enemy.body.velocity.y=500;
+	// removed enemy spawn //
+	
+	// enemy=game.add.sprite(6100,400, "enemy");
+	// game.physics.arcade.enable(enemy) ;
+	// Enemies.add(enemy);
+//	enemy.body.allowGravity=false; // this line was disabled in original source
+//	enemy.body.immovable=true; // this line was disabled in original source
+	// enemy.body.velocity.y=500;
+	//                     */
 }
 	
 Level1releasePlatform32 = function(){
@@ -183,24 +208,29 @@ Level1releasePlatform32 = function(){
 	IW4.body.immovable=true;
 	IW4.body.velocity.x=-500;
 	
-	enemy2=game.add.sprite(5000,400, "enemy2");
-	game.physics.arcade.enable(enemy2) ;
-	Enemies.add(enemy2);
-//	enemy2.body.allowGravity=false;
-//	enemy2.body.immovable=true;
-	enemy2.body.velocity.y=500;
+	// removed enemy spawn //
+
+	// enemy2=game.add.sprite(5000,400, "enemy2");
+	// game.physics.arcade.enable(enemy2) ;
+	// Enemies.add(enemy2);
+//	enemy2.body.allowGravity=false; // this line was disabled in original source
+//	enemy2.body.immovable=true; // this line was disabled in original source
+	// enemy2.body.velocity.y=500;
+	//** */
 }
 	
 
+	//** */
+	// Level1releaseGroundEnemy = function(){
+	// enemy4 = game.add.sprite(game.rnd.integerInRange(2500, 6000),925, "enemy4");
+	// game.physics.arcade.enable(enemy4) ;
+	// Enemies.add(enemy4);
+	// enemy4.body.allowGravity=false;
+	// enemy4.body.immovable=true;
+	// enemy4.body.velocity.x=-500;
+	// }
+	//** */
 	
-	Level1releaseGroundEnemy = function(){
-	enemy4 = game.add.sprite(game.rnd.integerInRange(2500, 6000),925, "enemy4");
-	game.physics.arcade.enable(enemy4) ;
-	Enemies.add(enemy4);
-	enemy4.body.allowGravity=false;
-	enemy4.body.immovable=true;
-	enemy4.body.velocity.x=-500;
-	}
 	
 	
 	
@@ -213,7 +243,7 @@ Level1releasePlatform32 = function(){
 	coin4.body.velocity.x=-500;
 	}
 
-		Level1releaseGroundCoin2 = function(){
+	Level1releaseGroundCoin2 = function(){
 	coin3 = game.add.sprite(game.rnd.integerInRange(2500, 6000),925, "goldCoin");
 	game.physics.arcade.enable(coin3) ;
 	Coins.add(coin3);
@@ -254,20 +284,25 @@ Level1releasePlatform32 = function(){
 	
 	Level1State.prototype.update=function()
 	{
-		if(score > 19){
+
+		
+
+
+		// win condition
+		if(score > 9){
 		startMenu2();
-	}
+		}
 		
 		game.physics.arcade.collide(player,Invisibleground); 
 		game.physics.arcade.overlap(player,Coins,null, this.onCollision,this);
 		game.physics.arcade.collide(player,Platforms); 
-				game.physics.arcade.collide(player,Platforms1);
-		game.physics.arcade.overlap(player,Enemies,null, this.playerHit,this);
+		game.physics.arcade.collide(player,Platforms1);
+		// game.physics.arcade.overlap(player,Enemies,null, this.playerHit,this);
 		game.physics.arcade.collide(Coins, Platforms); 
 		game.physics.arcade.collide(Coins, InvisibleWalls); 
 		game.physics.arcade.collide(coin,Invisibleground); 
-		game.physics.arcade.collide(Enemies, Platforms); 
-		game.physics.arcade.collide(Enemies, InvisibleWalls); 
+		// game.physics.arcade.collide(Enemies, Platforms); 
+		// game.physics.arcade.collide(Enemies, InvisibleWalls); 
 		
 		
 		player.body.velocity.x=0;
@@ -280,6 +315,7 @@ Level1releasePlatform32 = function(){
 		player.body.velocity.y=-2100
 		player.loadTexture('player')
 		};
+		if(escKey.isDown){startMain();} //exit game
 //		if else {player.loadTexture('player')};
 
 
@@ -294,22 +330,7 @@ Level1releasePlatform32 = function(){
 			platform3.destroy();
 			coin2.destroy();
 			Level1releasePlatform3();
-			}
-
-		
-		
-		
-			if (platform22.position.x <= -(game.rnd.integerInRange(1000, 3000))){
-			platform22.destroy();
-			enemy.destroy();
-			Level1releasePlatform22();
-			}
-			
-			if (platform32.position.x <= -(game.rnd.integerInRange(1000, 3000))){
-			platform32.destroy();
-			enemy2.destroy();
-			Level1releasePlatform32();
-			}
+			}			
 			
 			if (platform23.position.x <=-2050){
 			platform23.destroy();
@@ -323,12 +344,6 @@ Level1releasePlatform32 = function(){
 			Level1releasePlatform33();
 			}
 			
-			if (enemy4.position.x <= -2000){
-			enemy4.destroy();
-			Level1releaseGroundEnemy();
-			}
-	
-
 			if (coin4.position.x <= -1000){
 			coin4.destroy();
 			Level1releaseGroundCoin();
