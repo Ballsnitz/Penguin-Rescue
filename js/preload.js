@@ -40,9 +40,9 @@ PreloadState.prototype.preload = function() {
 	game.load.image("mountains3","images/mountains3.png");
 	game.load.image("mountains4","images/mountains4.png");
 	game.load.image("mountains41","images/mountains4.png");	
-	game.load.image("snow0","images/snow1.png");
-	game.load.image("snow1","images/snow2.png");
-	game.load.image("snow2","images/snow3.png");
+	game.load.image("snow0","images/snow_1.png");
+	game.load.image("snow1","images/snow_2.png");
+	game.load.image("snow2","images/snow_3.png");
 	game.load.image("clouds","images/clouds.png");
 	game.load.image("clouds1","images/clouds1.png");
 	game.load.image('floor', "images/floor.png");
