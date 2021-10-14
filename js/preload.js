@@ -29,7 +29,8 @@ PreloadState.prototype.preload = function() {
 	game.load.image('goldCoin3', "images/goldCoin3.png");
 	game.load.image('goldCoin4', "images/goldCoin4.png");
 	game.load.image('goldCoin5', "images/goldCoin5.png");
-	game.load.image('ground', "images/ground.png");
+	game.load.image('groundTop', "images/ground_top.png");
+	game.load.image('groundBottom', "images/ground_bottom.png");
 	game.load.image('ground1', "images/ground1.png")
 	game.load.image('ground2', "images/ground2.png")
 	game.load.image("background","images/background.jpg");

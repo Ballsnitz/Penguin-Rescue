@@ -15,16 +15,16 @@ MainMenu.prototype.create = function () {
   this.background.width = game.width;
   this.background.height = game.height;
 
+  // place the ground top before the snopw so the snow overlaps in a pleasing way :)
+  ground = game.add.tileSprite(0, 975, game.width, game.height, "groundTop")
+
   // make is snow!!!
   this.snow0 = game.add.tileSprite(0, 0, game.width, game.height, "snow0")
-  this.snow0.y = game.height - this.snow0.height;
   this.snow0.autoScroll(-80,+80);
   this.snow1 = game.add.tileSprite(0, 0, game.width, game.height, "snow1")
-  this.snow1.y = game.height - this.snow1.height;
-  this.snow1.autoScroll(-45,+45);
+  this.snow1.autoScroll(-60,+45);
   this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
-  this.snow2.y = game.height - this.snow2.height;
-  this.snow2.autoScroll(-25,+25);
+  this.snow2.autoScroll(-40,+25);
 
   //mountains
   this.mountain1 = game.add.sprite(0, 0, "mountains1");
@@ -37,14 +37,14 @@ MainMenu.prototype.create = function () {
 
 
 
-  this.floor = game.add.tileSprite(0, 1025, game.width, 100, "floor");
+  // this.floor = game.add.tileSprite(0, 1025, game.width, 100, "floor");
 
   this.adventure = game.add.sprite(0, 0, 'adventure');
   this.adventure.width = game.width;
   this.adventure.height = game.height;
 
-
-  ground = game.add.sprite(0, 1025, 'ground');
+  ground = game.add.tileSprite(0, 975, game.width, game.height, "groundBottom")
+  // ground = game.add.sprite(0, 1025, 'ground');
   game.physics.arcade.enable(ground);
   ground.body.immovable = true;
 
