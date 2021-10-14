@@ -32,6 +32,7 @@ function create() {
 Level1State.prototype.create = function () {
 	// init the keys
 	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+	cursors = game.input.keyboard.createCursorKeys();
 	// background
 	this.background = game.add.sprite(0, 0, "background");
 	this.background.width = game.width;
@@ -58,7 +59,6 @@ Level1State.prototype.create = function () {
 	this.mountain1.autoScroll(-150, 0);
 	this.mountain2.autoScroll(-350 / 4, 0);
 
-
 	this.ground = game.add.tileSprite(0, 975, game.width, game.height, "groundBottom");
 	this.ground.autoScroll(-500, 0);
 
@@ -78,7 +78,7 @@ Level1State.prototype.create = function () {
 	player.body.collideWorldBounds = true;
 
 
-	cursors = game.input.keyboard.createCursorKeys();
+	
 
 	Coins = game.add.group();
 	Platforms = game.add.group();
@@ -126,7 +126,7 @@ Level1releasePlatform2 = function () {
 	platform2.body.immovable = true;
 	platform2.body.velocity.x = -500;
 
-	IW1 = game.add.sprite(3200, 000, "invisiblewall500");
+	IW1 = game.add.sprite(3200, -25, "invisiblewall500");
 	game.physics.arcade.enable(IW1);
 	InvisibleWalls.add(IW1);
 	IW1.visable = false;
