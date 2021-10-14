@@ -1,11 +1,11 @@
 var MainMenu = function (game) {
 };
 
-var clouds
-var snow0
-var snow1
-var snow2
-var muteState
+var clouds;
+var snow0;
+var snow1;
+var snow2;
+var muteState;
 
 MainMenu.prototype.create = function () {
 
@@ -44,7 +44,6 @@ MainMenu.prototype.create = function () {
   this.adventure.height = game.height;
 
   ground = game.add.tileSprite(0, 975, game.width, game.height, "groundBottom")
-  // ground = game.add.sprite(0, 1025, 'ground');
   game.physics.arcade.enable(ground);
   ground.body.immovable = true;
 

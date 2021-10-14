@@ -1,6 +1,10 @@
 var Menu1 = function (game) {
 };
 
+var snow0;
+var snow1;
+var snow2;
+
 
 Menu1.prototype.create = function () {
 
@@ -10,10 +14,13 @@ Menu1.prototype.create = function () {
   this.background.width = game.width;
   this.background.height = game.height;
 
-
-  this.clouds = game.add.tileSprite(0, 0, game.width, game.height, "clouds")
-  this.clouds.y = game.height - this.clouds.height;
-  this.clouds.autoScroll(-80, +80);
+  // let is snow, let it snow!
+  this.snow0 = game.add.tileSprite(0, 0, game.width, game.height, "snow0")
+  this.snow0.autoScroll(-80,+80);
+  this.snow1 = game.add.tileSprite(0, 0, game.width, game.height, "snow1")
+  this.snow1.autoScroll(-60,+45);
+  this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
+  this.snow2.autoScroll(-40,+25);
 
   //mountains
 

@@ -36,9 +36,17 @@ Level1State.prototype.create = function () {
 	this.background = game.add.sprite(0, 0, "background");
 	this.background.width = game.width;
 	this.background.height = game.height;
-	// clouds
-	this.clouds = game.add.tileSprite(0, 0, game.width, game.height, "clouds")
-	this.clouds.y = game.height - this.clouds.height;
+	// top bit of the ground for that lovely snow over ground depth of field shenanigans
+	this.ground = game.add.tileSprite(0, 975, game.width, game.height, "groundTop");
+	this.ground.autoScroll(-450, 0);
+	// let is snow, let it snow!
+	this.snow0 = game.add.tileSprite(0, 0, game.width, game.height, "snow0")
+	this.snow0.autoScroll(-80,+80);
+	this.snow1 = game.add.tileSprite(0, 0, game.width, game.height, "snow1")
+	this.snow1.autoScroll(-60,+45);
+	this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
+	this.snow2.autoScroll(-40,+25);
+	
 	// mountains
 	this.mountain1 = game.add.tileSprite(0, 0, game.width, game.height, "mountains1")
 	this.mountain1.y = game.height - this.mountain1.height;
@@ -49,12 +57,12 @@ Level1State.prototype.create = function () {
 
 	this.mountain1.autoScroll(-150, 0);
 	this.mountain2.autoScroll(-350 / 4, 0);
-	this.clouds.autoScroll(-250, 0);
 
-	this.ground1 = game.add.tileSprite(0, 1025, game.width, game.height, "ground1")
-	this.ground1.autoScroll(-500, 0);
 
-	Invisibleground = game.add.sprite(0, 1025, "Invisibleground");
+	this.ground = game.add.tileSprite(0, 975, game.width, game.height, "groundBottom");
+	this.ground.autoScroll(-500, 0);
+
+	Invisibleground = game.add.sprite(0, 1050, "Invisibleground");
 	game.physics.arcade.enable(Invisibleground);
 	Invisibleground.body.allowGravity = false;
 	Invisibleground.body.immovable = true;
