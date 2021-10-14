@@ -126,7 +126,7 @@ Level1releasePlatform2 = function () {
 	platform2.body.immovable = true;
 	platform2.body.velocity.x = -500;
 
-	IW1 = game.add.sprite(3200, -25, "invisiblewall500");
+	IW1 = game.add.sprite(3200, 000, "invisiblewall500");
 	game.physics.arcade.enable(IW1);
 	InvisibleWalls.add(IW1);
 	IW1.visable = false;
