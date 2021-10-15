@@ -1,4 +1,4 @@
-var Menu1 = function (game) {
+var Menu1_3 = function (game) {
 };
 
 var snow0;
@@ -8,7 +8,7 @@ var food;
 var selected = 1;
 
 
-Menu1.prototype.create = function () {
+Menu1_3.prototype.create = function () {
 
 
   //background
@@ -35,22 +35,30 @@ Menu1.prototype.create = function () {
 
 }
 
-Menu1.prototype.update = function () {
+Menu1_3.prototype.update = function () {
   if (enterKey.isDown) {
     musicIntro.stop();
-    nextMenu1_2();
+    //nextMenu1_2();
   }
   if (escKey.isDown) {
     startMain();
   }
-  if (cursors.right.isDown) { this.game.state.start('Menu1') };
+  if (cursors.right.isDown) {
+    nextMenu1_1();
+  }
   //this.food.loadTexture('level1Food3');
 
 }
 
-//nextMenu1_2 = function () {
-//  this.game.state.start('menu1_2');
-//}
+nextMenu1_1 = function () {
+  this.game.state.start('Menu1');
+}
+nextMenu1_2 = function () {
+  this.game.state.start('Menu1_2');
+}
+nextMenu1_3 = function () {
+  this.game.state.start('Menu1_3');
+}
 startMain = function () {
   this.game.state.start('MainMenu');
 }
