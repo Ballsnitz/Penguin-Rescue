@@ -9,6 +9,7 @@ game.state.add('Menu1_2',  Menu1_2);
 game.state.add('Menu1_3',  Menu1_3);
 game.state.add('Menu2',    Menu2);
 game.state.add('Menu2_2',  Menu2_2);
+game.state.add('Menu2_3',  Menu2_3);
 game.state.add('Menu3',    Menu3);
 game.state.add('Menu3_2',  Menu3_2);
 game.state.add('preload',  PreloadState);

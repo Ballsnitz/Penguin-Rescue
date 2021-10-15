@@ -66,6 +66,9 @@ PreloadState.prototype.preload = function() {
 	game.load.image("level1Food1","images/lvl1-food1.png");
 	game.load.image("level1Food2","images/lvl1-food2.png");
 	game.load.image("level1Food3","images/lvl1-food3.png");
+	game.load.image("level2Enemy1","images/lvl2-enemy1.png");
+	game.load.image("level2Enemy2","images/lvl2-enemy2.png");
+	game.load.image("level2Enemy3","images/lvl2-enemy3.png");
 	game.load.image('Invisibleground', 'images/Invisibleground.png');
 	game.load.image('invisiblewall500', 'images/invisiblewall500.png');
 	game.load.image("groundWater","images/groundWater.png");

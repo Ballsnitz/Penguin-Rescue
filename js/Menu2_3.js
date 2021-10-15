@@ -1,4 +1,4 @@
-var Menu2_2 = function (game) {
+var Menu2_3 = function (game) {
 };
 
 var snow0;
@@ -8,7 +8,7 @@ var food;
 var selected = 1;
 
 
-Menu2_2.prototype.create = function () {
+Menu2_3.prototype.create = function () {
 
 
   //background
@@ -24,7 +24,7 @@ Menu2_2.prototype.create = function () {
   // this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
   // this.snow2.autoScroll(-40, +25);
 
-  this.food = game.add.sprite(0, 0, 'level2Enemy2');
+  this.food = game.add.sprite(0, 0, 'level2Enemy3');
 
   //  initalise keyboard controls.
   enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -35,7 +35,7 @@ Menu2_2.prototype.create = function () {
 
 }
 
-Menu2_2.prototype.update = function () {
+Menu2_3.prototype.update = function () {
   if (enterKey.isDown) {
     musicIntro.stop();
     startLevel2();
@@ -44,10 +44,10 @@ Menu2_2.prototype.update = function () {
     startMain();
   }
   if (cursors.right.isDown) {
-    nextMenu2_3();
+    nextMenu2_1();
   }
   if (cursors.left.isDown) {
-    nextMenu2_1();
+    nextMenu2_2();
   }
   //this.food.loadTexture('level1Food3');
 

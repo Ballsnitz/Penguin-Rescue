@@ -1,82 +1,70 @@
 var Menu2 = function (game) {
 };
 
+var snow0;
+var snow1;
+var snow2;
+var food;
+var selected = 1;
+
 
 Menu2.prototype.create = function () {
 
+
   //background
-  //
-  this.background2 = game.add.sprite(0, 0, "background2");
-  this.background2.width = game.width;
-  this.background2.height = game.height;
+  this.background = game.add.sprite(0, 0, "background2");
+  this.background.width = game.width;
+  this.background.height = game.height;
 
-  //	this.clouds1=game.add.tileSprite(0,0,game.width,game.height,"clouds1");
-  //      this.clouds1.y=game.height-this.clouds1.height;
-  //	this.clouds1.autoScroll(-250,0);		
+  // let is snow, let it snow!
+  // this.snow0 = game.add.tileSprite(0, 0, game.width, game.height, "snow0")
+  // this.snow0.autoScroll(-80, +80);
+  // this.snow1 = game.add.tileSprite(0, 0, game.width, game.height, "snow1")
+  // this.snow1.autoScroll(-60, +45);
+  // this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
+  // this.snow2.autoScroll(-40, +25);
 
-
-
-  //mountains
-
-  //      this.mountain1=game.add.sprite(0,0,"mountains1");
-  //      this.mountain1.width=game.width;
-  //     this.mountain1.height=game.height;
-
-  this.mountain3 = game.add.sprite(0, 0, "mountains3");
-  this.mountain3.width = game.width;
-  this.mountain3.height = game.height;
-
-
-  this.floor = game.add.tileSprite(0, 1025, game.width, 100, "floor");
-
-  this.level2 = game.add.sprite(0, 0, 'level2');
-  this.level2.width = game.width;
-  this.level2.height = game.height;
-
-
-
-  ground = game.add.sprite(0, 1025, 'ground');
-  game.physics.arcade.enable(ground);
-  ground.body.immovable = true;
-
-
-
-
-  //create the player
-  // The player at x:480 and y:440 and adjust its settings
-  player = game.add.sprite(600, 830, 'player');
-
+  this.food = game.add.sprite(0, 0, 'level2Enemy1');
 
   //  initalise keyboard controls.
   enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
   escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-
-  //	music1.stop();
-  //	music2.stop();
-  //	music3.stop();
-  musicC = this.game.add.audio('LCA');
-  musicC.play();
+  cursors = game.input.keyboard.createCursorKeys();
+  
 
 
 }
 
-
-/*
- * Update runs continuously. Its the game loop function.
- * Add collision detections and control events here
- */
 Menu2.prototype.update = function () {
   if (enterKey.isDown) {
     musicIntro.stop();
-    startGame2();
+    startLevel2();
   }
   if (escKey.isDown) {
     startMain();
   }
+  if (cursors.right.isDown) {
+    nextMenu2_2();
+  }
+  if (cursors.left.isDown) {
+    nextMenu2_3();
+  }
+  //this.food.loadTexture('level1Food3');
+
 }
-startGame2 = function () {
-  this.game.state.start('level2');
+
+nextMenu2_1 = function () {
+  this.game.state.start('Menu2');
+}
+nextMenu2_2 = function () {
+  this.game.state.start('Menu2_2');
+}
+nextMenu2_3 = function () {
+  this.game.state.start('Menu2_3');
 }
 startMain = function () {
   this.game.state.start('MainMenu');
+}
+startLevel2 = function () {
+  this.game.state.start('level2');
 }
