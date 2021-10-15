@@ -26,17 +26,6 @@ MainMenu.prototype.create = function () {
   this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
   this.snow2.autoScroll(-40,+25);
 
-  //mountains
-  this.mountain1 = game.add.sprite(0, 0, "mountains1");
-  this.mountain1.width = game.width;
-  this.mountain1.height = game.height;
-
-  this.mountain2 = game.add.sprite(0, 0, "mountains2");
-  this.mountain2.width = game.width;
-  this.mountain2.height = game.height;
-
-
-
   // this.floor = game.add.tileSprite(0, 1025, game.width, 100, "floor");
 
   this.adventure = game.add.sprite(0, 0, 'adventure');
@@ -68,15 +57,18 @@ MainMenu.prototype.create = function () {
   musicIntro.play();
   musicIntro.volume = 0.1
 
-  //	soundButton
+  // soundButton
   // button = game.add.button(game.world.centerX - -1000, 000, 'muteButton', actionOnClick, this, 2, 1, 0);
   muteState = game.add.sprite(game.world.centerX - -1000, 000, "mute");
   muteState.visible = false;
-  button = game.add.button(game.world.centerX - -1000, 000, 'muteButton', actionOnClick, this, 2, 1, 0);
+  button = game.add.button(game.world.centerX - -1000, 000, "muteButton", actionOnClick, this, 2, 1, 0);
 
   button.onInputOver.add(over, this);
   button.onInputOut.add(out, this);
   button.onInputUp.add(up, this);
+
+  // start button image
+  this.start_btn = game.add.sprite(game.world.centerX -395, game.world.centerY+300, 'startButton');
 }
 
 function up() {

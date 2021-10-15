@@ -34,12 +34,20 @@ Level1State.prototype.create = function () {
 	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 	cursors = game.input.keyboard.createCursorKeys();
 	// background
-	this.background = game.add.sprite(0, 0, "background");
+	this.background = game.add.sprite(0, 0, "backgroundClear");
 	this.background.width = game.width;
 	this.background.height = game.height;
+	// mountains
+	this.mountains2 = game.add.tileSprite(0, 0, game.width, game.height, "mountains2")
+	this.mountains2.autoScroll(-30, 0);
+	this.mountains1 = game.add.tileSprite(0, 550, game.width, game.height, "mountains1")
+	this.mountains1.autoScroll(-40, 0);
+	// ocean
+	this.ground = game.add.tileSprite(0, 930, game.width, game.height, "oceanForeground");
+	this.ground.autoScroll(-100, 0);
 	// top bit of the ground for that lovely snow over ground depth of field shenanigans
 	this.ground = game.add.tileSprite(0, 975, game.width, game.height, "groundTop");
-	this.ground.autoScroll(-450, 0);
+	this.ground.autoScroll(-400, 0);
 	// let is snow, let it snow!
 	this.snow0 = game.add.tileSprite(0, 0, game.width, game.height, "snow0")
 	this.snow0.autoScroll(-80,+80);
@@ -47,39 +55,25 @@ Level1State.prototype.create = function () {
 	this.snow1.autoScroll(-60,+45);
 	this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
 	this.snow2.autoScroll(-40,+25);
-	
-	// mountains
-	this.mountain1 = game.add.tileSprite(0, 0, game.width, game.height, "mountains1")
-	this.mountain1.y = game.height - this.mountain1.height;
-	this.mountain2 = game.add.tileSprite(0, 0, game.width, game.height, "mountains2")
-	this.mountain2.y = game.height - this.mountain2.height;
-	this.mountain2.tileScale.y = 4;
-	this.mountain2.tileScale.x = 4;
-
-	this.mountain1.autoScroll(-150, 0);
-	this.mountain2.autoScroll(-350 / 4, 0);
-
+	// most foregrounded (hahaha) part of the ground.
 	this.ground = game.add.tileSprite(0, 975, game.width, game.height, "groundBottom");
-	this.ground.autoScroll(-500, 0);
-
+	this.ground.autoScroll(-450, 0);
+	// This seems to be the "actual" ground that the player object interacts with.
 	Invisibleground = game.add.sprite(0, 1050, "Invisibleground");
 	game.physics.arcade.enable(Invisibleground);
 	Invisibleground.body.allowGravity = false;
 	Invisibleground.body.immovable = true;
-
+	// The score text.
 	scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '70px', fill: '#FFFFFF' });
 	scoreText.fixedToCamera = true;
 	score = 0
-
+	// the player
 	player = game.add.sprite(600, 800, 'player');
 	game.physics.arcade.enable(player);
-	player.body.bounce.y = 0.2;
+	player.body.bounce.y = 0; // bounce was set to 0.2 But i personally hate the bounce.
 	player.body.gravity.y = 5000;
-	player.body.collideWorldBounds = true;
-
-
-	
-
+	player.body.collideWorldBounds = true;// 
+	// These "coins" are the penguins food.
 	Coins = game.add.group();
 	Platforms = game.add.group();
 	// Enemies = game.add.group();
@@ -89,25 +83,21 @@ Level1State.prototype.create = function () {
 	Level1releasePlatform2()
 	Level1releasePlatform3();
 
-
 	Level1releasePlatform22()
 	Level1releasePlatform32();
 
 	Level1releasePlatform23()
 	Level1releasePlatform33();
 
-
 	/// Level1releaseGroundEnemy ();
 	Level1releaseGroundCoin();
 	Level1releaseGroundCoin2();
 	Level1releaseGroundCoin3();
 
-
 	musicIntro.stop();
 	music1 = this.game.add.audio('L1A');
 	music1.play();
 	music1.volume = 0.1
-
 
 	polarBearEat = this.game.add.audio('polarBearEat');
 	polarBearHurt = this.game.add.audio('polarBearHurt');

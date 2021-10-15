@@ -37,7 +37,6 @@ Menu2.prototype.create = function () {
 
 Menu2.prototype.update = function () {
   if (enterKey.isDown) {
-    musicIntro.stop();
     startLevel2();
   }
   if (escKey.isDown) {

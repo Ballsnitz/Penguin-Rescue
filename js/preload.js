@@ -33,6 +33,7 @@ PreloadState.prototype.preload = function() {
 	game.load.image('groundBottom', "images/ground_bottom.png");
 	game.load.image('ground1', "images/ground1.png")
 	game.load.image('ground2', "images/ground2.png")
+	game.load.image("backgroundClear","images/background_clear.jpg");
 	game.load.image("background","images/background.jpg");
 	game.load.image("background2","images/background2.jpg");
 	game.load.image("background3","images/background3.jpg");
@@ -76,7 +77,9 @@ PreloadState.prototype.preload = function() {
 	game.load.image("mute","images/Mute.png");	
 	game.load.image("unMute","images/UnMute.png");	
 	game.load.spritesheet("muteButton","images/MuteSheet.png",150,150);	
-	
+	game.load.image("startButton", "images/startButton.png");
+	game.load.image('oceanForeground', "images/ocean1.png")
+
     game.load.atlasJSONHash('hero', 'images/polarRun.png', 'images/polarRun.json');
 	
 	game.load.audio('intro', 'audio/Intro.mp3');	
@@ -91,5 +94,5 @@ PreloadState.prototype.preload = function() {
 	
 }
 PreloadState.prototype.create = function() {
-    game.state.start('MainMenu');
+    game.state.start('Fail');
 }
