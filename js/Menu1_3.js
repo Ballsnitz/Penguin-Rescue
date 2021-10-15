@@ -24,7 +24,7 @@ Menu1.prototype.create = function () {
   this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
   this.snow2.autoScroll(-40, +25);
 
-  this.food = game.add.sprite(0, 0, 'level1Food2');
+  this.food = game.add.sprite(0, 0, 'level1Food3');
 
   //  initalise keyboard controls.
   enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -43,7 +43,7 @@ Menu1.prototype.update = function () {
   if (escKey.isDown) {
     startMain();
   }
-  if (cursors.right.isDown) { this.game.state.start('menu1_3') };
+  if (cursors.right.isDown) { this.game.state.start('menu1') };
   //this.food.loadTexture('level1Food3');
 
 }
