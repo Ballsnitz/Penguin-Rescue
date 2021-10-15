@@ -43,7 +43,7 @@ Menu1.prototype.update = function () {
   if (escKey.isDown) {
     startMain();
   }
-  if (cursors.right.isDown) { this.game.state.start('menu1_3') };
+  if (cursors.right.isDown) { this.game.state.start('Menu1_3') };
   //this.food.loadTexture('level1Food3');
 
 }
