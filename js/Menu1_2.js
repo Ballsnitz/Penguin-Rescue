@@ -38,13 +38,16 @@ Menu1_2.prototype.create = function () {
 Menu1_2.prototype.update = function () {
   if (enterKey.isDown) {
     musicIntro.stop();
-    //nextMenu1_2();
+    startLevel1();
   }
   if (escKey.isDown) {
     startMain();
   }
   if (cursors.right.isDown) {
     nextMenu1_3();
+  }
+  if (cursors.left.isDown) {
+    nextMenu1_1();
   }
   //this.food.loadTexture('level1Food3');
 
@@ -61,4 +64,7 @@ nextMenu1_3 = function () {
 }
 startMain = function () {
   this.game.state.start('MainMenu');
+}
+startLevel1 = function () {
+  this.game.state.start('level1');
 }
