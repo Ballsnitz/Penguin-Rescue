@@ -47,6 +47,9 @@ MainMenu.prototype.create = function () {
 
   //  initalise keyboard controls.
   enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+  spaceBar =  game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+	aKey =  game.input.keyboard.addKey(Phaser.Keyboard.A);
+	dKey =  game.input.keyboard.addKey(Phaser.Keyboard.D);
 
 
   //	music1.stop();
@@ -92,7 +95,7 @@ function out() {
  * Add collision detections and control events here
  */
 MainMenu.prototype.update = function () {
-  if (enterKey.isDown) {
+  if (enterKey.isDown || spaceBar.isDown) {
     startMenu1();
   }
 }

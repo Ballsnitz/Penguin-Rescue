@@ -34,6 +34,12 @@ Level1State.prototype.create = function () {
 	// init the keys
 	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 	cursors = game.input.keyboard.createCursorKeys();
+
+	spaceBar =  game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+	aKey =  game.input.keyboard.addKey(Phaser.Keyboard.A);
+	dKey =  game.input.keyboard.addKey(Phaser.Keyboard.D);
+
+
 	// background
 	this.background = game.add.sprite(0, 0, "backgroundClear");
 	this.background.width = game.width;
@@ -169,10 +175,6 @@ Level1releasePlatform3 = function () {
 	//	coin2.body.immovable=true;
 	coin2.body.velocity.y = 500;
 }
-
-
-
-
 
 Level1releasePlatform22 = function () {
 	platform22 = game.add.sprite(6000, game.rnd.integerInRange(950, 850), "platform2");
@@ -318,9 +320,9 @@ Level1State.prototype.update = function () {
 
 
 	player.body.velocity.x = 0;
-	if (cursors.left.isDown) { player.body.velocity.x = -1100 };
-	if (cursors.right.isDown) { player.body.velocity.x = 600 };
-	if (cursors.up.isDown && player.body.touching.down) {
+	if ((cursors.left.isDown) || aKey.isDown) { player.body.velocity.x = -1100 };
+	if ((cursors.right.isDown) || dKey.isDown) { player.body.velocity.x = 600 };
+	if ((cursors.up.isDown || spaceBar.isDown) && player.body.touching.down) {
 		player.loadTexture('playerJump');
 		player.body.velocity.y = -2100
 		player.loadTexture('player')
@@ -329,6 +331,7 @@ Level1State.prototype.update = function () {
 		//startMain();
 		penguinHealth = penguinHealth - 1;
 	} //exit game
+
 	// test key
 	//		if else {player.loadTexture('player')};
 
@@ -460,7 +463,9 @@ Level1State.prototype.onCollision = function (sprite1, sprite2) {
 	polarBearEat.play();
 	sprite2.destroy();
 	score = score + 1;
-	penguinHealth = penguinHealth + 1;
+	if(penguinHealth < 3){
+		penguinHealth = penguinHealth + 1;
+	}
 }
 
 gameOver1 = function () {
