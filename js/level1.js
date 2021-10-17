@@ -14,6 +14,7 @@ var text;
 var graphics;
 var hsv;
 var timerEvents = [];
+var health;
 
 /*
  * Create runs once only when Phaser first loads
@@ -27,6 +28,8 @@ function create() {
 	hsv = Phaser.Display.Color.HSVColorWheel();
 
 	graphics = this.add.graphics({ x: 240, y: 36 });
+
+	health = 3;
 }
 
 Level1State.prototype.create = function () {
@@ -64,7 +67,7 @@ Level1State.prototype.create = function () {
 	Invisibleground.body.allowGravity = false;
 	Invisibleground.body.immovable = true;
 	// The score text.
-	scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '70px', fill: '#FFFFFF' });
+	scoreText = game.add.text(16, 16, 'score : ', { fontSize: '70px', fill: '#FFFFFF' });
 	scoreText.fixedToCamera = true;
 	score = 0
 	// the player
@@ -288,6 +291,25 @@ Level1State.prototype.update = function () {
 	if (score > 9) {
 		startMenu2();
 	}
+	// health condition
+	switch(health)
+	{
+	case 0:
+		heart = game.add.sprite(16, 16, "heart");
+	break;
+	case 1:
+		heart = game.add.sprite(16+84, 16, "heart");
+	break;
+	case 2:
+		heart = game.add.sprite(16+84+84, 16, "heart");
+	break;
+	case 1:
+		heart = game.add.sprite(16+84+84+84, 16, "heart");
+	break;
+	default:
+		console.log ("ERROR: Health value outside of range");
+	}
+
 
 	game.physics.arcade.collide(player, Invisibleground);
 	game.physics.arcade.overlap(player, Coins, null, this.onCollision, this);
@@ -376,8 +398,32 @@ Level1State.prototype.playerHit = function (sprite1, sprite2) {
 Level1State.prototype.onCollision = function (sprite1, sprite2) {
 	polarBearEat.play();
 	sprite2.destroy();
-	score = score + 1;
 	scoreText.text = 'score : ' + score;
+	// Lay down the dark purple
+	scoreText = game.add.text(16, 14, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	scoreText = game.add.text(18, 16, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	scoreText = game.add.text(16, 18, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	scoreText = game.add.text(14, 16, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	// Now the diagonals
+	scoreText = game.add.text(14, 14, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	scoreText = game.add.text(18, 14, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	scoreText = game.add.text(18, 18, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+	scoreText = game.add.text(14, 18, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
+	scoreText.fixedToCamera = true;
+
+	// Lay down FFFFFF
+	scoreText = game.add.text(16, 16, 'score : ', { fontSize: '70px', fill: '#FFFFFF' });
+	scoreText.fixedToCamera = true;
+
+	score = score + 1;
+	
 }
 
 gameOver1 = function () {

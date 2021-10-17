@@ -33,7 +33,7 @@ FailState.prototype.create = function() {
 
 	musicComplete = this.game.add.audio('LCA');
     musicComplete.play();
-		musicComplete.volume = 0.1
+	musicComplete.volume = 0.1
 
 }
 

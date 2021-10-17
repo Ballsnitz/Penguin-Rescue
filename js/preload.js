@@ -78,7 +78,10 @@ PreloadState.prototype.preload = function() {
 	game.load.image("unMute","images/UnMute.png");	
 	game.load.spritesheet("muteButton","images/MuteSheet.png",150,150);	
 	game.load.image("startButton", "images/startButton.png");
-	game.load.image('oceanForeground', "images/ocean1.png")
+	game.load.image('oceanForeground', "images/ocean1.png");
+
+	// HUD STUFF
+	game.load.image('heart', "images/healthHeart.png");
 
     game.load.atlasJSONHash('hero', 'images/polarRun.png', 'images/polarRun.json');
 	
