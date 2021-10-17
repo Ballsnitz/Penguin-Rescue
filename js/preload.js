@@ -82,6 +82,7 @@ PreloadState.prototype.preload = function() {
 
 	// HUD STUFF
 	game.load.image('heart', "images/healthHeart.png");
+	game.load.image('heartLost', "images/healthHeartLost.png");
 
     game.load.atlasJSONHash('hero', 'images/polarRun.png', 'images/polarRun.json');
 	

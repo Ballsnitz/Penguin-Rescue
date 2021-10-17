@@ -14,7 +14,13 @@ var text;
 var graphics;
 var hsv;
 var timerEvents = [];
-var health;
+var penguinHealth;
+var heart1;
+var heart2;
+var heart3;
+var heart1_lost;
+var heart2_lost;
+var heart3_lost;
 
 /*
  * Create runs once only when Phaser first loads
@@ -29,10 +35,10 @@ function create() {
 
 	graphics = this.add.graphics({ x: 240, y: 36 });
 
-	health = 3;
 }
 
 Level1State.prototype.create = function () {
+	penguinHealth = 3;
 	// init the keys
 	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 	cursors = game.input.keyboard.createCursorKeys();
@@ -108,6 +114,15 @@ Level1State.prototype.create = function () {
 
 	// init the timer!
 	// Timer adapted from <https://phaser.io/examples/v3/view/time/multiple-timers#> //
+
+	// GUI/HUD stuff here so it renders above the other bits and pieces!
+	// setup the health HUD stuff
+	heart1 = game.add.sprite(16, 16+8, "heart");
+	heart2 = game.add.sprite(16+84, 16+4, "heart");
+	heart3 = game.add.sprite(16+84+84, 16, "heart");
+	heart1_lost = game.add.sprite(-250, -250, "heartLost");
+	heart2_lost = game.add.sprite(-250, -250, "heartLost");
+	heart3_lost = game.add.sprite(-250, -250, "heartLost");
 }
 
 
@@ -291,25 +306,6 @@ Level1State.prototype.update = function () {
 	if (score > 9) {
 		startMenu2();
 	}
-	// health condition
-	switch(health)
-	{
-	case 0:
-		heart = game.add.sprite(16, 16, "heart");
-	break;
-	case 1:
-		heart = game.add.sprite(16+84, 16, "heart");
-	break;
-	case 2:
-		heart = game.add.sprite(16+84+84, 16, "heart");
-	break;
-	case 1:
-		heart = game.add.sprite(16+84+84+84, 16, "heart");
-	break;
-	default:
-		console.log ("ERROR: Health value outside of range");
-	}
-
 
 	game.physics.arcade.collide(player, Invisibleground);
 	game.physics.arcade.overlap(player, Coins, null, this.onCollision, this);
@@ -332,34 +328,31 @@ Level1State.prototype.update = function () {
 		player.loadTexture('player')
 	};
 	if (escKey.isDown) { startMain(); } //exit game
+	// test key
 	//		if else {player.loadTexture('player')};
 
 
-
+	// destroy the "coins" once they are outside of view
 	if (platform2.position.x <= -(game.rnd.integerInRange(1000, 3000))) {
 		platform2.destroy();
 		coin.destroy();
 		Level1releasePlatform2();
 	}
-
 	if (platform3.position.x <= -(game.rnd.integerInRange(1000, 3000))) {
 		platform3.destroy();
 		coin2.destroy();
 		Level1releasePlatform3();
 	}
-
 	if (platform23.position.x <= -2050) {
 		platform23.destroy();
 
 		Level1releasePlatform23();
 	}
-
 	if (platform33.position.x <= -5000) {
 		platform33.destroy();
 
 		Level1releasePlatform33();
 	}
-
 	if (coin4.position.x <= -1000) {
 		coin4.destroy();
 		Level1releaseGroundCoin();
@@ -372,12 +365,74 @@ Level1State.prototype.update = function () {
 		coin5.destroy();
 		Level1releaseGroundCoin3();
 	}
-
+	// Player DEAD!
 	if (player.position.y >= 1025) {
 		player.loadTexture('playerDead');
 		player.body.velocity = false;
 		sprite2.body.velocity = false;
 		game.time.events.add(500, gameOver2, this);
+	}
+	// health condition
+	switch(penguinHealth)
+	{
+	case 1:
+		heart1.position.x = 16;
+		heart1.position.y = 16+8;
+		heart2.position.x = -250;
+		heart2.position.y = -250;
+		heart3.position.x = -250;
+		heart3.position.y = -250;
+		heart1_lost.position.x = -250;
+		heart1_lost.position.y = -250;
+		heart2_lost.position.x = 16+84;
+		heart2_lost.position.y = 16+4;
+		heart3_lost.position.x = 16+84+84;
+		heart3_lost.position.y = 16;
+	break;
+	case 2:
+		heart1.position.x = 16;
+		heart1.position.y = 16+8;
+		heart2.position.x = 16+84;
+		heart2.position.y = 16+4;
+		heart3.position.x = -250;
+		heart3.position.y = -250;
+		heart1_lost.position.x = -250;
+		heart1_lost.position.y = -250;
+		heart2_lost.position.x = -250;
+		heart2_lost.position.y = -250;
+		heart3_lost.position.x = 16+84+84;
+		heart3_lost.position.y = 16;
+	break;
+	case 3:
+		heart1.position.x = 16;
+		heart1.position.y = 16+8;
+		heart2.position.x = 16+84;
+		heart2.position.y = 16+4;
+		heart3.position.x = 16+84+84;
+		heart3.position.y = 16;
+		heart1_lost.position.x = -250;
+		heart1_lost.position.y = -250;
+		heart2_lost.position.x = -250;
+		heart2_lost.position.y = -250;
+		heart3_lost.position.x = -250;
+		heart3_lost.position.y = -250;
+	break;
+	case 0:
+		heart1_lost.position.x = 16;
+		heart1_lost.position.y = 16+8;
+		heart2_lost.position.x = 16+84;
+		heart2_lost.position.y = 16+4;
+		heart3_lost.position.x = 16+84+84;
+		heart3_lost.position.y = 16;
+		heart1.position.x = -250;
+		heart1.position.y = -250;
+		heart2.position.x = -250;
+		heart2.position.y = -250;
+		heart3.position.x = -250;
+		heart3.position.y = -250;
+	break;
+	default:
+		console.log ("ERROR: Health value outside of range");
 	}
 
 }
@@ -389,6 +444,7 @@ Level1State.prototype.playerHit = function (sprite1, sprite2) {
 	player.body.velocity = false;
 	sprite2.body.velocity = false
 	onCollision = false
+	penguinHealth = penguinHealth - 1;
 	//go to gameover after a few miliseconds
 	//stop moving to the right
 	music1.stop();
@@ -398,31 +454,8 @@ Level1State.prototype.playerHit = function (sprite1, sprite2) {
 Level1State.prototype.onCollision = function (sprite1, sprite2) {
 	polarBearEat.play();
 	sprite2.destroy();
-	scoreText.text = 'score : ' + score;
-	// Lay down the dark purple
-	scoreText = game.add.text(16, 14, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	scoreText = game.add.text(18, 16, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	scoreText = game.add.text(16, 18, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	scoreText = game.add.text(14, 16, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	// Now the diagonals
-	scoreText = game.add.text(14, 14, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	scoreText = game.add.text(18, 14, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	scoreText = game.add.text(18, 18, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-	scoreText = game.add.text(14, 18, 'score : ', { fontSize: '70px', fill: '#9D1BAC' });
-	scoreText.fixedToCamera = true;
-
-	// Lay down FFFFFF
-	scoreText = game.add.text(16, 16, 'score : ', { fontSize: '70px', fill: '#FFFFFF' });
-	scoreText.fixedToCamera = true;
-
 	score = score + 1;
+	penguinHealth = penguinHealth + 1;
 	
 }
 
