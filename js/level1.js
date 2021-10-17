@@ -11,9 +11,6 @@ var Level1State = function (game) {
  *
  */
 var text;
-var graphics;
-var hsv;
-var timerEvents = [];
 var penguinHealth;
 var heart1;
 var heart2;
@@ -27,17 +24,12 @@ var heart3_lost;
  * create the game scene by adding objects to the stage
  */
 function create() {
-	text = this.add.text(32, 32);
-
-	timerEvents.push(this.time.addEvent({ delay: 10000, loop: true }));
-
-	hsv = Phaser.Display.Color.HSVColorWheel();
-
-	graphics = this.add.graphics({ x: 240, y: 36 });
+	
 
 }
 
 Level1State.prototype.create = function () {
+
 	penguinHealth = 3;
 	// init the keys
 	escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
@@ -73,9 +65,9 @@ Level1State.prototype.create = function () {
 	Invisibleground.body.allowGravity = false;
 	Invisibleground.body.immovable = true;
 	// The score text.
-	scoreText = game.add.text(16, 16, 'score : ', { fontSize: '70px', fill: '#FFFFFF' });
-	scoreText.fixedToCamera = true;
-	score = 0
+	// scoreText = game.add.text(16, 16, 'score : ', { fontSize: '70px', fill: '#FFFFFF' });
+	// scoreText.fixedToCamera = true;
+	// score = 0
 	// the player
 	player = game.add.sprite(600, 800, 'player');
 	game.physics.arcade.enable(player);
@@ -123,8 +115,10 @@ Level1State.prototype.create = function () {
 	heart1_lost = game.add.sprite(-250, -250, "heartLost");
 	heart2_lost = game.add.sprite(-250, -250, "heartLost");
 	heart3_lost = game.add.sprite(-250, -250, "heartLost");
+	heart1_lost.alpha = 0.5;
+	heart2_lost.alpha = 0.5;
+	heart3_lost.alpha = 0.5;
 }
-
 
 Level1releasePlatform2 = function () {
 	platform2 = game.add.sprite(3000, game.rnd.integerInRange(850, 650), "platform2");
@@ -306,6 +300,10 @@ Level1State.prototype.update = function () {
 	if (score > 9) {
 		startMenu2();
 	}
+	// lost all hearts condition (heart attack?)
+	if (penguinHealth < 1) {
+		gameOver1();
+	}
 
 	game.physics.arcade.collide(player, Invisibleground);
 	game.physics.arcade.overlap(player, Coins, null, this.onCollision, this);
@@ -327,7 +325,10 @@ Level1State.prototype.update = function () {
 		player.body.velocity.y = -2100
 		player.loadTexture('player')
 	};
-	if (escKey.isDown) { startMain(); } //exit game
+	if (escKey.isDown) {
+		//startMain();
+		penguinHealth = penguinHealth - 1;
+	} //exit game
 	// test key
 	//		if else {player.loadTexture('player')};
 
@@ -373,6 +374,11 @@ Level1State.prototype.update = function () {
 		game.time.events.add(500, gameOver2, this);
 	}
 	// health condition
+	/* 
+	Hindsight
+	I should have done somthing simpler, than changing the position of the hearts.
+	Could probably just anipulate the alpha. Oh well, i can't be bothered changing this right now.
+	*/
 	switch(penguinHealth)
 	{
 	case 1:
@@ -432,7 +438,7 @@ Level1State.prototype.update = function () {
 		heart3.position.y = -250;
 	break;
 	default:
-		console.log ("ERROR: Health value outside of range");
+		// console.log ("ERROR: Health value outside of range");
 	}
 
 }
@@ -448,7 +454,6 @@ Level1State.prototype.playerHit = function (sprite1, sprite2) {
 	//go to gameover after a few miliseconds
 	//stop moving to the right
 	music1.stop();
-	game.time.events.add(500, gameOver1, this);
 }
 
 Level1State.prototype.onCollision = function (sprite1, sprite2) {
@@ -456,11 +461,10 @@ Level1State.prototype.onCollision = function (sprite1, sprite2) {
 	sprite2.destroy();
 	score = score + 1;
 	penguinHealth = penguinHealth + 1;
-	
 }
 
 gameOver1 = function () {
-	this.game.state.start('Menu1');
+	this.game.state.start('Fail');
 }
 startMenu2 = function () {
 	music1.stop();

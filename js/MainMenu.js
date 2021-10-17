@@ -68,17 +68,18 @@ MainMenu.prototype.create = function () {
   button.onInputUp.add(up, this);
 
   // start button image
-  this.start_btn = game.add.sprite(game.world.centerX -395, game.world.centerY+300, 'startButton');
+  buttonFade = start_btn = game.add.sprite(game.world.centerX -395, game.world.centerY+300, 'startButton');
+  buttonFade.alpha = 0.5;
+  // fade in
+  game.add.tween(buttonFade).to( { alpha: 1 }, 500, Phaser.Easing.Bounce.None, true, 1, 500, true);
 }
 
 function up() {
   console.log('button up', arguments);
 }
-
 function over() {
   console.log('mute');
 }
-
 function out() {
   console.log('button out');
 }
