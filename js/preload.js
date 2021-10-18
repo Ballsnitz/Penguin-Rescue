@@ -91,10 +91,16 @@ PreloadState.prototype.preload = function() {
     game.load.audio('L2A', 'audio/Level2Audio.mp3');
     game.load.audio('L3A', 'audio/Level3Audio.mp3');
 	game.load.audio('LCA', 'audio/LevelCompleteAudio.mp3');
+
     game.load.audio('polarBearEat', 'audio/polarBearEat.mp3');
 	game.load.audio('polarBearHurt', 'audio/polarBearHurt.mp3');
     game.load.audio('youWinAudio', 'audio/youWinAudio.mp3');
 
+	// loading the pre-level assets.
+	game.load.image("food1","images/level1/pre-level_lobster.png");
+	game.load.image("food2","images/level1/pre-level_squid.png");
+	game.load.image("food3","images/level1/pre-level_fish.png");
+	game.load.image("selected","images/level1/pre-level_item-selected.png");
 	
 }
 PreloadState.prototype.create = function() {

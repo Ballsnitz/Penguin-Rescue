@@ -1,8 +1,4 @@
-
 //declare a new state
-
-
-
 var Level1State = function (game) {
 };
 
@@ -25,7 +21,6 @@ var heart3_lost;
  */
 function create() {
 	
-
 }
 
 Level1State.prototype.create = function () {
@@ -71,9 +66,7 @@ Level1State.prototype.create = function () {
 	Invisibleground.body.allowGravity = false;
 	Invisibleground.body.immovable = true;
 	// The score text.
-	// scoreText = game.add.text(16, 16, 'score : ', { fontSize: '70px', fill: '#FFFFFF' });
-	// scoreText.fixedToCamera = true;
-	// score = 0
+	score = 0
 	// the player
 	player = game.add.sprite(600, 800, 'player');
 	game.physics.arcade.enable(player);
@@ -83,7 +76,6 @@ Level1State.prototype.create = function () {
 	// These "coins" are the penguins food.
 	Coins = game.add.group();
 	Platforms = game.add.group();
-	// Enemies = game.add.group();
 	InvisibleWalls = game.add.group();
 	Platforms1 = game.add.group();
 
@@ -295,9 +287,6 @@ Level1releasePlatform33 = function () {
 
 Level1State.prototype.update = function () {
 
-
-
-
 	// win condition
 	if (score > 9) {
 		startMenu2();
@@ -325,15 +314,11 @@ Level1State.prototype.update = function () {
 	if ((cursors.up.isDown || spaceBar.isDown) && player.body.touching.down) {
 		player.loadTexture('playerJump');
 		player.body.velocity.y = -2100
-		player.loadTexture('player')
-	};
+		player.loadTexture('player');
+	}
 	if (escKey.isDown) {
-		//startMain();
-		penguinHealth = penguinHealth - 1;
+		startMain();
 	} //exit game
-
-	// test key
-	//		if else {player.loadTexture('player')};
 
 
 	// destroy the "coins" once they are outside of view
