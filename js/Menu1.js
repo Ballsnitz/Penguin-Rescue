@@ -8,6 +8,12 @@ var food;
 var selected = 1;
 
 
+Menu1.prototype.preload = function () {
+  game.load.image("food1","images/level1/pre-level_lobster.png");
+  game.load.image("food2","images/level1/pre-level_squid.png");
+  game.load.image("food3","images/level1/pre-level_fish.png");
+}
+
 Menu1.prototype.create = function () {
 
 
@@ -24,15 +30,26 @@ Menu1.prototype.create = function () {
   this.snow2 = game.add.tileSprite(0, 0, game.width, game.height, "snow2")
   this.snow2.autoScroll(-40, +25);
 
-  this.food = game.add.sprite(0, 0, 'level1Food1');
+  this.food1 = game.add.sprite(40, +250, "food1");
+  food1.alpha = 0;
+  this.food2 = game.add.sprite(100, +250, "food2");
+  food2.alpha = 0;
+  this.food3 = game.add.sprite(160, +250, "food3");
+  food3.alpha = 0;
 
   //  initalise keyboard controls.
   enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
   escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
   cursors = game.input.keyboard.createCursorKeys();
   
+  this.food1 = game.add.tileSprite(0, 0, game.width, game.height, "snow0")
 
+  // lets do the cascsade fade!
 
+  // fade in
+  game.add.tween(food1).to( { alpha: 1 }, 500, Phaser.Easing.Bounce.None, true, 1, 500, true);
+  game.add.tween(food2).to( { alpha: 1 }, 500, Phaser.Easing.Bounce.None, true, 1, 500, true);
+  game.add.tween(food3).to( { alpha: 1 }, 500, Phaser.Easing.Bounce.None, true, 1, 500, true);
 }
 
 Menu1.prototype.update = function () {
